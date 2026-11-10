@@ -153,6 +153,19 @@ def push() -> None:
 
 
 @app.command()
+def serve(
+    host: str = typer.Option("127.0.0.1", help="Interface to bind"),
+    port: int = typer.Option(8000, help="Port"),
+    reload: bool = typer.Option(False, help="Auto-reload on code changes (development)"),
+) -> None:
+    """Start the web app: JSON API under /api and the built React dashboard at /."""
+    import uvicorn
+
+    typer.echo(f"Dashboard: http://{host}:{port}   API docs: http://{host}:{port}/docs")
+    uvicorn.run("hcdw.api.app:app", host=host, port=port, reload=reload)
+
+
+@app.command()
 def info() -> None:
     """Show which warehouse is configured and its table sizes."""
     from hcdw.db import get_conn
@@ -162,9 +175,9 @@ def info() -> None:
     typer.echo(f"local file = {s.dw_path}" if s.dw_target == "local" else f"MotherDuck db = {s.md_database}")
     con = get_conn(read_only=s.dw_target == "local")
     rows = con.execute("""
-        SELECT table_schema, table_name, estimated_size
-        FROM duckdb_tables() WHERE table_schema IN ('staging', 'dw')
-        ORDER BY table_schema, table_name""").fetchall()
+        SELECT schema_name, table_name, estimated_size
+        FROM duckdb_tables() WHERE schema_name IN ('staging', 'dw')
+        ORDER BY schema_name, table_name""").fetchall()
     for schema, table, size in rows:
         typer.echo(f"  {schema}.{table:28s} ~{size:>12,} rows")
     con.close()
