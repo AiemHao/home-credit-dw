@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="dg" viewBox="0 0 1240 540" width="1240" height="540" role="img" aria-labelledby="dg6-t dg6-d">
+<title id="dg6-t">Decision support flow</title>
+<desc id="dg6-d">Applicant inputs become a feature row that feeds a LightGBM risk model and a set of underwriting rules. The model's probability of default maps to green, yellow or red bands; the rules can raise the outcome. The strictest outcome wins and every triggered reason is listed: approve, manual review or reject.</desc>
+<style>
+.dg{--canvas:#fcfcfb;--bg:#ffffff;--line:#d6d5ce;--ink:#171716;--ink2:#52514e;--ink3:#8a8882;--acc:#2a78d6;--acc-soft:#eaf2fd;--acc-ink:#1c5cab;--ext:#efeeea;--grn:#0ca30c;--grn-soft:#e6f5e6;--grn-ink:#0b6b0b;--yel:#eda100;--yel-soft:#fdf2d9;--yel-ink:#8a5d00;--red:#d03b3b;--red-soft:#fbe8e8;--red-ink:#a52b2b;font-family:"Segoe UI Variable Text","Segoe UI",system-ui,-apple-system,Roboto,sans-serif}
+@media (prefers-color-scheme:dark){.dg{--canvas:#1a1a19;--bg:#232321;--line:#3b3b37;--ink:#f0efec;--ink2:#c3c2b7;--ink3:#97958e;--acc:#3987e5;--acc-soft:#15263b;--acc-ink:#8dbaf0;--ext:#2c2c2a;--grn-soft:#132e15;--grn-ink:#6fd36f;--yel-soft:#382c10;--yel-ink:#f5c454;--red-soft:#3a1919;--red-ink:#f08a8a}}
+:root[data-theme=light] .dg{--canvas:#fcfcfb;--bg:#ffffff;--line:#d6d5ce;--ink:#171716;--ink2:#52514e;--ink3:#8a8882;--acc:#2a78d6;--acc-soft:#eaf2fd;--acc-ink:#1c5cab;--ext:#efeeea;--grn-soft:#e6f5e6;--grn-ink:#0b6b0b;--yel-soft:#fdf2d9;--yel-ink:#8a5d00;--red-soft:#fbe8e8;--red-ink:#a52b2b}
+:root[data-theme=dark] .dg{--canvas:#1a1a19;--bg:#232321;--line:#3b3b37;--ink:#f0efec;--ink2:#c3c2b7;--ink3:#97958e;--acc:#3987e5;--acc-soft:#15263b;--acc-ink:#8dbaf0;--ext:#2c2c2a;--grn-soft:#132e15;--grn-ink:#6fd36f;--yel-soft:#382c10;--yel-ink:#f5c454;--red-soft:#3a1919;--red-ink:#f08a8a}
+.dg text{fill:var(--ink)}.dg .t3{fill:var(--ink3)}
+.dg .canvas{fill:var(--canvas)}
+.dg .ti{font-size:15px;font-weight:600}.dg .tech{font-size:12px;fill:var(--acc-ink)}.dg .d{font-size:12.5px;fill:var(--ink2)}.dg .sm{font-size:11.5px}
+.dg .card{fill:var(--bg);stroke:var(--line);stroke-width:1.2}.dg .acc{fill:var(--acc-soft);stroke:var(--acc);stroke-width:1.4}.dg .ext{fill:var(--ext);stroke:var(--line);stroke-width:1.2}
+.dg .e{fill:none;stroke:var(--ink3);stroke-width:1.6}.dg .dash{stroke-dasharray:6 5}.dg .ah{fill:var(--ink3)}
+.dg .g{fill:var(--grn)}.dg .y{fill:var(--yel)}.dg .rd{fill:var(--red)}
+.dg .gs{fill:var(--grn-soft);stroke:var(--grn);stroke-width:1.4}.dg .ys{fill:var(--yel-soft);stroke:var(--yel);stroke-width:1.4}.dg .rs{fill:var(--red-soft);stroke:var(--red);stroke-width:1.4}
+.dg .gt{fill:var(--grn-ink);font-size:11px;font-weight:700}.dg .yt{fill:var(--yel-ink);font-size:11px;font-weight:700}.dg .rt{fill:var(--red-ink);font-size:11px;font-weight:700}
+.dg .big{font-size:17px;font-weight:700}
+.dg .dot{fill:var(--ink3)}
+.dg .lb{font-size:12px;fill:var(--ink2);paint-order:stroke;stroke:var(--canvas);stroke-width:5px;stroke-linejoin:round}
+</style>
+<defs>
+  <marker id="dg6-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="ah"/></marker>
+</defs>
+<rect class="canvas" width="1240" height="540"/>
+
+<!-- Inputs -->
+<rect class="card" x="20" y="70" width="230" height="330" rx="12"/>
+<text x="40" y="98" class="ti">Applicant inputs</text>
+<text x="40" y="116" class="tech">[Risk simulator form]</text>
+<g class="d">
+  <circle class="dot" cx="44" cy="144" r="2.5"/><text x="54" y="148" class="d">income · credit · annuity</text>
+  <circle class="dot" cx="44" cy="172" r="2.5"/><text x="54" y="176" class="d">age · years employed</text>
+  <circle class="dot" cx="44" cy="200" r="2.5"/><text x="54" y="204" class="d">employment type</text>
+  <circle class="dot" cx="44" cy="228" r="2.5"/><text x="54" y="232" class="d">contract type</text>
+  <circle class="dot" cx="44" cy="256" r="2.5"/><text x="54" y="260" class="d">external credit score</text>
+  <circle class="dot" cx="44" cy="284" r="2.5"/><text x="54" y="288" class="d">worst days past due</text>
+  <circle class="dot" cx="44" cy="312" r="2.5"/><text x="54" y="316" class="d">active bureau credits</text>
+  <circle class="dot" cx="44" cy="340" r="2.5"/><text x="54" y="344" class="d">overdue in bureau now?</text>
+</g>
+<text x="40" y="384" class="t3 sm">POST /api/simulator/score</text>
+
+<!-- Feature row -->
+<path class="e" d="M250,235 H298" marker-end="url(#dg6-a)"/>
+<rect class="card" x="300" y="170" width="210" height="130" rx="12"/>
+<text x="320" y="198" class="ti">Feature row</text>
+<text x="320" y="216" class="tech">[dss/features.py]</text>
+<text x="320" y="242" class="d">+ debt-to-income</text>
+<text x="320" y="260" class="d">+ credit-to-income</text>
+<text x="320" y="278" class="d">same columns as training</text>
+
+<!-- Training source -->
+<rect class="ext" x="300" y="22" width="210" height="64" rx="12"/>
+<text x="318" y="46" class="ti">Warehouse mart</text>
+<text x="318" y="66" class="d">labelled (train) applications</text>
+<path class="e dash" d="M510,54 H568" marker-end="url(#dg6-a)"/>
+<text x="539" y="46" class="lb" text-anchor="middle">train</text>
+
+<!-- Model -->
+<path class="e" d="M510,205 C540,205 540,120 568,120" marker-end="url(#dg6-a)"/>
+<rect class="card" x="570" y="22" width="290" height="190" rx="12"/>
+<text x="590" y="50" class="ti">Risk model</text>
+<text x="590" y="68" class="tech">[LightGBM · models/model.pkl]</text>
+<text x="590" y="100" class="d">p(default) mapped to a band</text>
+<rect class="g" x="590" y="114" width="44" height="14" rx="4"/>
+<rect class="y" x="636" y="114" width="64" height="14" rx="0"/>
+<rect class="rd" x="702" y="114" width="138" height="14" rx="4"/>
+<rect class="rd" x="702" y="114" width="10" height="14"/>
+<text x="590" y="146" class="t3 sm">0</text>
+<text x="634" y="146" class="t3 sm" text-anchor="middle">8%</text>
+<text x="700" y="146" class="t3 sm" text-anchor="middle">20%</text>
+<text x="840" y="146" class="t3 sm" text-anchor="end">40%+</text>
+<text x="612" y="172" class="gt" text-anchor="middle">GREEN</text>
+<text x="668" y="172" class="yt" text-anchor="middle">YELLOW</text>
+<text x="771" y="172" class="rt" text-anchor="middle">RED</text>
+<text x="590" y="198" class="t3 sm">no model yet → YELLOW (manual review)</text>
+
+<!-- Rules -->
+<path class="e" d="M510,265 C540,265 540,330 568,330" marker-end="url(#dg6-a)"/>
+<rect class="card" x="570" y="240" width="290" height="200" rx="12"/>
+<text x="590" y="268" class="ti">Underwriting rules</text>
+<text x="590" y="286" class="tech">[dss/rules.py]</text>
+<text x="590" y="320" class="d">debt-to-income &gt; 0.40</text><rect class="ys" x="776" y="306" width="66" height="20" rx="10"/><text x="809" y="320" class="yt" text-anchor="middle">YELLOW</text>
+<text x="590" y="352" class="d">overdue in bureau now</text><rect class="ys" x="776" y="338" width="66" height="20" rx="10"/><text x="809" y="352" class="yt" text-anchor="middle">YELLOW</text>
+<text x="590" y="384" class="d">history &gt; 90 days past due</text><rect class="rs" x="776" y="370" width="66" height="20" rx="10"/><text x="809" y="384" class="rt" text-anchor="middle">RED</text>
+<text x="590" y="420" class="t3 sm">rules can only make the outcome stricter</text>
+
+<!-- Combine -->
+<path class="e" d="M860,120 C890,120 885,230 908,230" marker-end="url(#dg6-a)"/>
+<path class="e" d="M860,340 C890,340 885,250 908,250" marker-end="url(#dg6-a)"/>
+<rect class="acc" x="910" y="180" width="140" height="120" rx="12"/>
+<text x="930" y="210" class="ti">Combine</text>
+<text x="930" y="234" class="d">strictest outcome</text>
+<text x="930" y="252" class="d">wins, and every</text>
+<text x="930" y="270" class="d">reason is listed</text>
+
+<!-- Decisions -->
+<path class="e" d="M1050,215 C1066,215 1064,120 1078,120" marker-end="url(#dg6-a)"/>
+<path class="e" d="M1050,240 H1078" marker-end="url(#dg6-a)"/>
+<path class="e" d="M1050,265 C1066,265 1064,360 1078,360" marker-end="url(#dg6-a)"/>
+
+<rect class="gs" x="1080" y="88" width="152" height="64" rx="12"/>
+<circle class="g" cx="1104" cy="120" r="12"/><path d="M1098,120 L1102.5,124.5 L1110,116" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1124" y="118" class="big">Approve</text><text x="1124" y="136" class="gt">GREEN</text>
+
+<rect class="ys" x="1080" y="208" width="152" height="64" rx="12"/>
+<circle class="y" cx="1104" cy="240" r="12"/><path d="M1104,233 V242" stroke="#0b0b0b" stroke-width="2.4" stroke-linecap="round"/><circle cx="1104" cy="247" r="1.5" fill="#0b0b0b"/>
+<text x="1124" y="238" class="big" style="font-size:15px">Manual review</text><text x="1124" y="256" class="yt">YELLOW</text>
+
+<rect class="rs" x="1080" y="328" width="152" height="64" rx="12"/>
+<circle class="rd" cx="1104" cy="360" r="12"/><path d="M1099,355 L1109,365 M1109,355 L1099,365" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/>
+<text x="1124" y="358" class="big">Reject</text><text x="1124" y="376" class="rt">RED</text>
+
+<text x="20" y="470" class="d">Status colours are reserved for the decision and always come with an icon and a word, never colour alone.</text>
+<text x="20" y="492" class="d">The model is trained on the warehouse (mart.v_application_wide), so the dashboard and the model see the same cleaned data.</text>
+</svg>
