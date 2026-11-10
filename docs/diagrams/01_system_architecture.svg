@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="dg" viewBox="0 0 1240 800" width="1240" height="800" role="img" aria-labelledby="dg1-t dg1-d">
+<title id="dg1-t">System architecture (C4 container view)</title>
+<desc id="dg1-d">An analyst uses the React web dashboard, which calls a FastAPI web API. The API runs whitelisted, cached OLAP queries against a DuckDB data warehouse and calls the decision-support model. A Python ETL pipeline builds the warehouse from the Kaggle CSV files; MotherDuck holds an optional shared copy.</desc>
+<style>
+.dg{--canvas:#fcfcfb;--bg:#ffffff;--line:#d6d5ce;--ink:#171716;--ink2:#52514e;--ink3:#8a8882;--acc:#2a78d6;--acc-soft:#eaf2fd;--acc-ink:#1c5cab;--org:#eb6834;--org-soft:#fdeee6;--org-ink:#b4441a;--teal:#1baf7a;--teal-soft:#e3f5ee;--teal-ink:#0f7a54;--grn:#0ca30c;--grn-soft:#e6f5e6;--yel:#eda100;--yel-soft:#fdf2d9;--red:#d03b3b;--red-soft:#fbe8e8;--ext:#efeeea;font-family:"Segoe UI Variable Text","Segoe UI",system-ui,-apple-system,Roboto,sans-serif}
+@media (prefers-color-scheme:dark){.dg{--canvas:#1a1a19;--bg:#232321;--line:#3b3b37;--ink:#f0efec;--ink2:#c3c2b7;--ink3:#97958e;--acc:#3987e5;--acc-soft:#15263b;--acc-ink:#8dbaf0;--org:#d95926;--org-soft:#3a2117;--org-ink:#f2a27e;--teal:#199e70;--teal-soft:#11302a;--teal-ink:#5fd3a6;--grn-soft:#132e15;--yel-soft:#382c10;--red-soft:#3a1919;--ext:#2c2c2a}}
+:root[data-theme=light] .dg{--canvas:#fcfcfb;--bg:#ffffff;--line:#d6d5ce;--ink:#171716;--ink2:#52514e;--ink3:#8a8882;--acc:#2a78d6;--acc-soft:#eaf2fd;--acc-ink:#1c5cab;--org:#eb6834;--org-soft:#fdeee6;--org-ink:#b4441a;--teal:#1baf7a;--teal-soft:#e3f5ee;--teal-ink:#0f7a54;--grn-soft:#e6f5e6;--yel-soft:#fdf2d9;--red-soft:#fbe8e8;--ext:#efeeea}
+:root[data-theme=dark] .dg{--canvas:#1a1a19;--bg:#232321;--line:#3b3b37;--ink:#f0efec;--ink2:#c3c2b7;--ink3:#97958e;--acc:#3987e5;--acc-soft:#15263b;--acc-ink:#8dbaf0;--org:#d95926;--org-soft:#3a2117;--org-ink:#f2a27e;--teal:#199e70;--teal-soft:#11302a;--teal-ink:#5fd3a6;--grn-soft:#132e15;--yel-soft:#382c10;--red-soft:#3a1919;--ext:#2c2c2a}
+.dg text{fill:var(--ink)}.dg .t2{fill:var(--ink2)}.dg .t3{fill:var(--ink3)}
+.dg .ti{font-size:15px;font-weight:600}.dg .tech{font-size:12px;fill:var(--acc-ink)}.dg .d{font-size:12.5px;fill:var(--ink2)}.dg .sm{font-size:11.5px}
+.dg .canvas{fill:var(--canvas)}.dg .card{fill:var(--bg);stroke:var(--line);stroke-width:1.2}
+.dg .acc{fill:var(--acc-soft);stroke:var(--acc);stroke-width:1.4}.dg .ext{fill:var(--ext);stroke:var(--line);stroke-width:1.2}
+.dg .bound{fill:none;stroke:var(--ink3);stroke-width:1.3;stroke-dasharray:7 6}
+.dg .e{fill:none;stroke:var(--ink3);stroke-width:1.6}.dg .dash{stroke-dasharray:6 5}.dg .ah{fill:var(--ink3)}.dg .fa{fill:var(--acc)}
+.dg .lb{font-size:12px;fill:var(--ink2);paint-order:stroke;stroke:var(--canvas);stroke-width:5px;stroke-linejoin:round}
+</style>
+<defs>
+  <marker id="dg1-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah"/></marker>
+</defs>
+<rect class="canvas" width="1240" height="800"/>
+
+<!-- Person -->
+<rect class="acc" x="505" y="16" width="230" height="100" rx="14"/>
+<circle class="fa" cx="541" cy="48" r="10"/>
+<path class="fa" d="M523,80 a18,16 0 0 1 36,0 z"/>
+<text x="572" y="44" class="ti">Credit analyst</text>
+<text x="572" y="62" class="tech">[Person]</text>
+<text x="572" y="86" class="d">Analyses portfolio risk</text>
+<text x="572" y="103" class="d">and scores applicants</text>
+
+<!-- System boundary -->
+<rect class="bound" x="160" y="150" width="920" height="610" rx="18"/>
+<text x="182" y="744" class="ti">Home Credit DW <tspan class="tech">[software system]</tspan></text>
+
+<!-- Edges (drawn under the boxes) -->
+<path class="e" d="M620,116 V178" marker-end="url(#dg1-a)"/>
+<text x="632" y="152" class="lb">uses · HTTPS</text>
+<path class="e" d="M620,284 V348" marker-end="url(#dg1-a)"/>
+<text x="632" y="321" class="lb">JSON over HTTP</text>
+<path class="e" d="M620,454 V526" marker-end="url(#dg1-a)"/>
+<text x="632" y="494" class="lb">read-only SQL</text>
+<path class="e" d="M770,402 H818" marker-end="url(#dg1-a)"/>
+<text x="794" y="394" class="lb" text-anchor="middle">score</text>
+<path class="e dash" d="M940,454 C940,505 806,498 758,534" marker-end="url(#dg1-a)"/>
+<text x="884" y="500" class="lb">trains on mart</text>
+<path class="e" d="M146,596 H198" marker-end="url(#dg1-a)"/>
+<path class="e" d="M410,596 H468" marker-end="url(#dg1-a)"/>
+<text x="439" y="588" class="lb" text-anchor="middle">builds</text>
+<path class="e dash" d="M770,622 H1102" marker-end="url(#dg1-a)"/>
+<text x="936" y="612" class="lb" text-anchor="middle">hcdw push (optional)</text>
+
+<!-- Web dashboard -->
+<rect class="card" x="470" y="180" width="300" height="104" rx="12"/>
+<text x="490" y="208" class="ti">Web dashboard</text>
+<text x="490" y="226" class="tech">[React · TypeScript · Tailwind · Recharts]</text>
+<text x="490" y="250" class="d">KPIs · drill-down · credit history</text>
+<text x="490" y="268" class="d">OLAP pivot explorer · risk simulator</text>
+
+<!-- Web API -->
+<rect class="card" x="470" y="350" width="300" height="104" rx="12"/>
+<text x="490" y="378" class="ti">Web API</text>
+<text x="490" y="396" class="tech">[Python · FastAPI · Uvicorn]</text>
+<text x="490" y="420" class="d">Whitelisted, cached OLAP queries</text>
+<text x="490" y="438" class="d">roll-up · CUBE · drill · slice/dice</text>
+
+<!-- Decision support -->
+<rect class="card" x="820" y="350" width="240" height="104" rx="12"/>
+<text x="840" y="378" class="ti">Decision support</text>
+<text x="840" y="396" class="tech">[LightGBM · business rules]</text>
+<text x="840" y="420" class="d">p(default) + underwriting rules</text>
+<text x="840" y="438" class="d">→ Approve · Review · Reject</text>
+
+<!-- Data warehouse (database) -->
+<path class="acc" d="M470,544 a150,14 0 0 1 300,0 v104 a150,14 0 0 1 -300,0 z"/>
+<ellipse class="acc" cx="620" cy="544" rx="150" ry="14"/>
+<text x="490" y="588" class="ti">Data warehouse</text>
+<text x="490" y="606" class="tech">[DuckDB · hc.duckdb]</text>
+<text x="490" y="630" class="d">staging → dw (star schema) → mart</text>
+<text x="490" y="648" class="d">2 facts · 6 dimensions · 25 checks</text>
+
+<!-- ETL -->
+<rect class="card" x="200" y="540" width="210" height="112" rx="12"/>
+<text x="218" y="568" class="ti">ETL pipeline</text>
+<text x="218" y="586" class="tech">[Python · pandas · SQL]</text>
+<text x="218" y="610" class="d">extract → clean → aggregate</text>
+<text x="218" y="628" class="d">→ load → quality gate</text>
+<text x="218" y="646" class="d">hcdw etl · ~40 s</text>
+
+<!-- External systems -->
+<rect class="ext" x="16" y="548" width="130" height="96" rx="12"/>
+<text x="32" y="576" class="ti">Kaggle data</text>
+<text x="32" y="594" class="t3 sm">[external source]</text>
+<text x="32" y="618" class="d">8 CSV files</text>
+<text x="32" y="636" class="d">2.6 GB</text>
+
+<rect class="ext" x="1104" y="578" width="124" height="88" rx="12"/>
+<text x="1120" y="606" class="ti">MotherDuck</text>
+<text x="1120" y="624" class="t3 sm">[optional cloud]</text>
+<text x="1120" y="648" class="d">shared copy</text>
+
+<!-- Legend -->
+<g transform="translate(400,782)">
+  <rect class="card" x="0" y="-11" width="18" height="13" rx="3"/><text x="26" y="0" class="d">Container</text>
+  <rect class="acc" x="110" y="-11" width="18" height="13" rx="3"/><text x="136" y="0" class="d">Person / data store</text>
+  <rect class="ext" x="282" y="-11" width="18" height="13" rx="3"/><text x="308" y="0" class="d">External system</text>
+  <path class="bound" d="M432,-4 H462"/><text x="470" y="0" class="d">System boundary</text>
+  <path class="e dash" d="M600,-4 H630"/><text x="638" y="0" class="d">Offline / optional</text>
+</g>
+</svg>
