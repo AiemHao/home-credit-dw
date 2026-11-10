@@ -1,0 +1,78 @@
+flowchart LR
+  subgraph SRC["Kaggle files"]
+    a1["application_train.csv"]
+    a2["application_test.csv"]
+    b["bureau.csv"]
+    bb["bureau_balance.csv"]
+    pa["previous_application.csv"]
+    ip["installments_payments.csv"]
+    pc["POS_CASH_balance.csv"]
+    cc["credit_card_balance.csv"]
+  end
+
+  subgraph STG["staging · typed and cleaned"]
+    sa["application"]
+    sac["application_clean"]
+    sb["bureau"]
+    sbb["bureau_balance"]
+    spa["previous_application"]
+    sip["installments_payments"]
+    spc["pos_cash_balance"]
+    scc["credit_card_balance"]
+  end
+
+  subgraph AGG["staging · aggregates"]
+    abb["agg_bureau_balance"]
+    ab["agg_bureau"]
+    ap["agg_previous"]
+    ai["agg_installments"]
+    apo["agg_pos"]
+    ac["agg_cc"]
+    prof["agg_credit_profile"]
+  end
+
+  subgraph STAR["dw · star schema"]
+    dc["dim_customer"]
+    dk["dim_contract"]
+    dr["dim_region"]
+    dch["dim_credit_history"]
+    dt["dim_time"]
+    dbc["dim_bureau_category"]
+    fla[["fact_loan_application"]]
+    fbc[["fact_bureau_credit"]]
+  end
+
+  a1 --> sa
+  a2 --> sa
+  sa -->|"clean.py"| sac
+  b --> sb
+  bb --> sbb
+  pa --> spa
+  ip --> sip
+  pc --> spc
+  cc --> scc
+
+  sbb --> abb
+  sb --> ab
+  abb --> ab
+  spa --> ap
+  sip --> ai
+  spc --> apo
+  scc --> ac
+  sa --> prof
+  ab --> prof
+  ap --> prof
+  ai --> prof
+  apo --> prof
+  ac --> prof
+
+  sac --> dc
+  sac --> dk
+  sac --> dr
+  prof --> dch
+  sb --> dt
+  sb --> dbc
+  sac --> fla
+  prof --> fla
+  sb --> fbc
+  abb --> fbc
