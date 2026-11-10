@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Design tokens as "r g b" triplets so Tailwind can add alpha (bg-accent/10).
+   Chart colours live in src/lib/theme.tsx (same values, hex) because SVG needs literal colours. */
+:root {
+  color-scheme: light;
+  --page: 246 246 243;
+  --surface: 252 252 251;
+  --raised: 240 239 236;
+  --line: 225 224 217;
+  --ink: 23 23 22;
+  --ink-2: 82 81 78;
+  --ink-3: 120 118 112;
+  --accent: 42 120 214;
+  --accent-soft: 230 240 252;
+  --accent-ink: 28 92 171;
+  --good: 12 163 12;
+  --warn: 250 178 25;
+  --bad: 208 59 59;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: 17 17 16;
+  --surface: 26 26 25;
+  --raised: 37 37 35;
+  --line: 51 51 47;
+  --ink: 240 239 236;
+  --ink-2: 195 194 183;
+  --ink-3: 150 148 141;
+  --accent: 57 135 229;
+  --accent-soft: 22 38 59;
+  --accent-ink: 134 182 239;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-page font-sans text-ink antialiased;
+  font-size: 14px;
+}
+
+@layer components {
+  .card {
+    @apply rounded-xl border border-line bg-surface shadow-card;
+  }
+  .card-pad {
+    @apply p-4 sm:p-5;
+  }
+  .eyebrow {
+    @apply text-[11px] font-semibold uppercase tracking-wider text-ink-3;
+  }
+  .btn {
+    @apply inline-flex items-center gap-1.5 rounded-lg border border-line bg-surface px-3 py-1.5 text-sm font-medium text-ink-2 transition hover:bg-raised hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50;
+  }
+  .btn-primary {
+    @apply border-transparent bg-accent text-white hover:bg-accent-ink hover:text-white;
+  }
+  .input {
+    @apply w-full rounded-lg border border-line bg-surface px-3 py-1.5 text-sm text-ink outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/25;
+  }
+  .num {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Recharts: keep focus rings off SVG paths after clicks. */
+.recharts-wrapper *:focus {
+  outline: none;
+}
+
+/* Thin, unobtrusive scrollbars. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(var(--line)) transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
