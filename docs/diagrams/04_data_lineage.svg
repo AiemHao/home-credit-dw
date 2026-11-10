@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="dg" viewBox="0 0 1240 580" width="1240" height="580" role="img" aria-labelledby="dg4-t dg4-d">
+<title id="dg4-t">Data lineage</title>
+<desc id="dg4-d">Eight Kaggle files are loaded into typed staging tables, cleaned and aggregated to one row per key, then loaded into the dimensions and facts of the star schema.</desc>
+<style>
+.dg{--canvas:#fcfcfb;--bg:#ffffff;--line:#d6d5ce;--ink:#171716;--ink2:#52514e;--ink3:#8a8882;--acc:#2a78d6;--acc-soft:#eaf2fd;--acc-ink:#1c5cab;--org:#eb6834;--org-soft:#fdeee6;--teal:#1baf7a;--teal-soft:#e3f5ee;--ext:#efeeea;font-family:"Segoe UI Variable Text","Segoe UI",system-ui,-apple-system,Roboto,sans-serif}
+@media (prefers-color-scheme:dark){.dg{--canvas:#1a1a19;--bg:#232321;--line:#3b3b37;--ink:#f0efec;--ink2:#c3c2b7;--ink3:#97958e;--acc:#3987e5;--acc-soft:#15263b;--acc-ink:#8dbaf0;--org:#d95926;--org-soft:#3a2117;--teal:#199e70;--teal-soft:#11302a;--ext:#2c2c2a}}
+:root[data-theme=light] .dg{--canvas:#fcfcfb;--bg:#ffffff;--line:#d6d5ce;--ink:#171716;--ink2:#52514e;--ink3:#8a8882;--acc:#2a78d6;--acc-soft:#eaf2fd;--acc-ink:#1c5cab;--org:#eb6834;--org-soft:#fdeee6;--teal:#1baf7a;--teal-soft:#e3f5ee;--ext:#efeeea}
+:root[data-theme=dark] .dg{--canvas:#1a1a19;--bg:#232321;--line:#3b3b37;--ink:#f0efec;--ink2:#c3c2b7;--ink3:#97958e;--acc:#3987e5;--acc-soft:#15263b;--acc-ink:#8dbaf0;--org:#d95926;--org-soft:#3a2117;--teal:#199e70;--teal-soft:#11302a;--ext:#2c2c2a}
+.dg text{fill:var(--ink)}.dg .t3{fill:var(--ink3)}
+.dg .canvas{fill:var(--canvas)}
+.dg .h{font-size:15px;font-weight:600}.dg .hs{font-size:12px;fill:var(--ink3)}
+.dg .n{font-family:"Cascadia Code",Consolas,ui-monospace,monospace;font-size:12.5px}
+.dg .file{fill:var(--ext);stroke:var(--line);stroke-width:1.1}
+.dg .stg{fill:var(--bg);stroke:var(--line);stroke-width:1.1}
+.dg .agg{fill:var(--teal-soft);stroke:var(--teal);stroke-width:1.2}
+.dg .dim{fill:var(--acc-soft);stroke:var(--acc);stroke-width:1.2}
+.dg .fct{fill:var(--org-soft);stroke:var(--org);stroke-width:1.4}
+.dg .e{fill:none;stroke:var(--ink3);stroke-width:1.3;opacity:0.75}
+.dg .eb{fill:none;stroke:var(--acc);stroke-width:1.3;opacity:0.7}
+.dg .ah{fill:var(--ink3)}
+.dg .col{fill:none;stroke:var(--line);stroke-width:1;stroke-dasharray:3 5}
+.dg .lg{font-size:12.5px;fill:var(--ink2)}
+</style>
+<defs>
+  <marker id="dg4-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="ah"/></marker>
+  <marker id="dg4-b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--acc)"/></marker>
+</defs>
+<rect class="canvas" width="1240" height="580"/>
+
+<!-- Column headers -->
+<text x="20" y="30" class="h">Kaggle files</text><text x="20" y="48" class="hs">8 CSV · 58.5M rows</text>
+<text x="330" y="30" class="h">staging</text><text x="330" y="48" class="hs">typed copies, declared columns only</text>
+<text x="640" y="30" class="h">staging · transformed</text><text x="640" y="48" class="hs">cleaned, 1 row per key</text>
+<text x="950" y="30" class="h">dw · star schema</text><text x="950" y="48" class="hs">2 facts · 6 dimensions</text>
+
+<!-- ===== Edges (behind nodes) ===== -->
+<!-- files -> staging -->
+<path class="e" d="M280,85 C305,85 305,105 328,105" marker-end="url(#dg4-a)"/>
+<path class="e" d="M280,125 C305,125 305,105 328,105" marker-end="url(#dg4-a)"/>
+<path class="e" d="M280,165 H328" marker-end="url(#dg4-a)"/>
+<path class="e" d="M280,205 H328" marker-end="url(#dg4-a)"/>
+<path class="e" d="M280,245 H328" marker-end="url(#dg4-a)"/>
+<path class="e" d="M280,285 H328" marker-end="url(#dg4-a)"/>
+<path class="e" d="M280,325 H328" marker-end="url(#dg4-a)"/>
+<path class="e" d="M280,365 H328" marker-end="url(#dg4-a)"/>
+<!-- staging -> transformed -->
+<path class="e" d="M590,105 H638" marker-end="url(#dg4-a)"/>
+<path class="e" d="M590,165 H638" marker-end="url(#dg4-a)"/>
+<path class="e" d="M590,205 H638" marker-end="url(#dg4-a)"/>
+<path class="e" d="M590,245 H638" marker-end="url(#dg4-a)"/>
+<path class="e" d="M590,285 H638" marker-end="url(#dg4-a)"/>
+<path class="e" d="M590,325 H638" marker-end="url(#dg4-a)"/>
+<path class="e" d="M590,365 H638" marker-end="url(#dg4-a)"/>
+<path class="e" d="M590,105 C615,105 612,445 638,445" marker-end="url(#dg4-a)"/>
+<!-- agg_bureau_balance -> agg_bureau (rollup inside the column) -->
+<path class="e" d="M900,205 C918,205 918,165 902,165" marker-end="url(#dg4-a)"/>
+<!-- aggregates bus -> agg_credit_profile -->
+<path class="e" d="M900,165 H930 M900,245 H930 M900,285 H930 M900,325 H930 M900,365 H930"/>
+<path class="e" d="M930,165 V445 H902" marker-end="url(#dg4-a)"/>
+<!-- transformed -> dw -->
+<path class="eb" d="M900,105 C925,105 925,85 948,85" marker-end="url(#dg4-b)"/>
+<path class="eb" d="M900,105 C925,105 925,125 948,125" marker-end="url(#dg4-b)"/>
+<path class="eb" d="M900,105 C925,105 925,165 948,165" marker-end="url(#dg4-b)"/>
+<path class="eb" d="M900,105 C935,105 925,225 948,225" marker-end="url(#dg4-b)"/>
+<path class="eb" d="M900,445 C940,445 930,225 948,225" marker-end="url(#dg4-b)"/>
+<path class="eb" d="M900,445 H948" marker-end="url(#dg4-b)"/>
+<path class="eb" d="M900,205 C912,205 910,214 910,226 V472"/>
+<!-- staging.bureau goes straight to the star schema (dates, junk dimension, bureau fact) -->
+<!-- staging.bureau bypasses the transformed column: down the gap, under it, then up into the star schema -->
+<path class="eb" d="M590,165 H620 a6,6 0 0 1 6,6 V466 a6,6 0 0 0 6,6 H934 a6,6 0 0 0 6,-6 V311 a6,6 0 0 1 6,-6 H948" marker-end="url(#dg4-b)"/>
+<path class="eb" d="M940,351 a6,6 0 0 1 6,-6 H948" marker-end="url(#dg4-b)"/>
+<path class="eb" d="M940,391 a6,6 0 0 1 6,-6 H948" marker-end="url(#dg4-b)"/>
+<text x="780" y="490" font-size="11.5" fill="var(--ink3)" text-anchor="middle">staging.bureau → dates, junk dimension, bureau fact (agg_bureau_balance adds DPD status)</text>
+
+<!-- ===== Nodes ===== -->
+<!-- files x=20 -->
+<rect class="file" x="20" y="70" width="260" height="30" rx="8"/><text x="34" y="90" class="n">application_train.csv</text>
+<rect class="file" x="20" y="110" width="260" height="30" rx="8"/><text x="34" y="130" class="n">application_test.csv</text>
+<rect class="file" x="20" y="150" width="260" height="30" rx="8"/><text x="34" y="170" class="n">bureau.csv</text>
+<rect class="file" x="20" y="190" width="260" height="30" rx="8"/><text x="34" y="210" class="n">bureau_balance.csv</text>
+<rect class="file" x="20" y="230" width="260" height="30" rx="8"/><text x="34" y="250" class="n">previous_application.csv</text>
+<rect class="file" x="20" y="270" width="260" height="30" rx="8"/><text x="34" y="290" class="n">installments_payments.csv</text>
+<rect class="file" x="20" y="310" width="260" height="30" rx="8"/><text x="34" y="330" class="n">POS_CASH_balance.csv</text>
+<rect class="file" x="20" y="350" width="260" height="30" rx="8"/><text x="34" y="370" class="n">credit_card_balance.csv</text>
+
+<!-- staging x=330 -->
+<rect class="stg" x="330" y="90" width="260" height="30" rx="8"/><text x="344" y="110" class="n">application</text><text x="576" y="110" class="hs" text-anchor="end">train + test</text>
+<rect class="stg" x="330" y="150" width="260" height="30" rx="8"/><text x="344" y="170" class="n">bureau</text>
+<rect class="stg" x="330" y="190" width="260" height="30" rx="8"/><text x="344" y="210" class="n">bureau_balance</text>
+<rect class="stg" x="330" y="230" width="260" height="30" rx="8"/><text x="344" y="250" class="n">previous_application</text>
+<rect class="stg" x="330" y="270" width="260" height="30" rx="8"/><text x="344" y="290" class="n">installments_payments</text>
+<rect class="stg" x="330" y="310" width="260" height="30" rx="8"/><text x="344" y="330" class="n">pos_cash_balance</text>
+<rect class="stg" x="330" y="350" width="260" height="30" rx="8"/><text x="344" y="370" class="n">credit_card_balance</text>
+
+<!-- transformed x=640 -->
+<rect class="agg" x="640" y="90" width="260" height="30" rx="8"/><text x="654" y="110" class="n">application_clean</text><text x="886" y="110" class="hs" text-anchor="end">clean.py</text>
+<rect class="agg" x="640" y="150" width="260" height="30" rx="8"/><text x="654" y="170" class="n">agg_bureau</text>
+<rect class="agg" x="640" y="190" width="260" height="30" rx="8"/><text x="654" y="210" class="n">agg_bureau_balance</text>
+<rect class="agg" x="640" y="230" width="260" height="30" rx="8"/><text x="654" y="250" class="n">agg_previous</text>
+<rect class="agg" x="640" y="270" width="260" height="30" rx="8"/><text x="654" y="290" class="n">agg_installments</text>
+<rect class="agg" x="640" y="310" width="260" height="30" rx="8"/><text x="654" y="330" class="n">agg_pos</text>
+<rect class="agg" x="640" y="350" width="260" height="30" rx="8"/><text x="654" y="370" class="n">agg_cc</text>
+<rect class="agg" x="640" y="430" width="260" height="30" rx="8" stroke-width="2"/><text x="654" y="450" class="n" font-weight="700">agg_credit_profile</text><text x="886" y="450" class="hs" text-anchor="end">1 per applicant</text>
+
+<!-- star schema x=950 -->
+<rect class="dim" x="950" y="70" width="270" height="30" rx="8"/><text x="964" y="90" class="n">dim_customer</text>
+<rect class="dim" x="950" y="110" width="270" height="30" rx="8"/><text x="964" y="130" class="n">dim_contract</text>
+<rect class="dim" x="950" y="150" width="270" height="30" rx="8"/><text x="964" y="170" class="n">dim_region</text>
+<rect class="fct" x="950" y="210" width="270" height="30" rx="8"/><text x="964" y="230" class="n" font-weight="700">fact_loan_application</text>
+<rect class="dim" x="950" y="290" width="270" height="30" rx="8"/><text x="964" y="310" class="n">dim_time</text><text x="1206" y="310" class="hs" text-anchor="end">calendar + bureau dates</text>
+<rect class="dim" x="950" y="330" width="270" height="30" rx="8"/><text x="964" y="350" class="n">dim_bureau_category</text>
+<rect class="fct" x="950" y="370" width="270" height="30" rx="8"/><text x="964" y="390" class="n" font-weight="700">fact_bureau_credit</text>
+<rect class="dim" x="950" y="430" width="270" height="30" rx="8"/><text x="964" y="450" class="n">dim_credit_history</text>
+
+<!-- Legend -->
+<g transform="translate(20,530)">
+  <rect class="file" x="0" y="0" width="18" height="13" rx="3"/><text x="26" y="11" class="lg">Kaggle file</text>
+  <rect class="stg" x="130" y="0" width="18" height="13" rx="3"/><text x="156" y="11" class="lg">staging table</text>
+  <rect class="agg" x="270" y="0" width="18" height="13" rx="3"/><text x="296" y="11" class="lg">cleaned / aggregated</text>
+  <rect class="dim" x="450" y="0" width="18" height="13" rx="3"/><text x="476" y="11" class="lg">dimension</text>
+  <rect class="fct" x="570" y="0" width="18" height="13" rx="3"/><text x="596" y="11" class="lg">fact</text>
+  <path class="eb" d="M660,7 H700" marker-end="url(#dg4-b)"/><text x="710" y="11" class="lg">loads into the star schema</text>
+</g>
+</svg>
