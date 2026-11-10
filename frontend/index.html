@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Credit-risk data warehouse and decision support on the Home Credit Default Risk dataset (CO4031)." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Home Credit DW</title>
+    <script>
+      // Apply the saved theme before first paint (no light flash in dark mode).
+      try {
+        // ?theme=light|dark wins (used by scripts/capture_figures.py), then the saved choice, then the OS.
+        var t = new URLSearchParams(location.search).get("theme") || localStorage.getItem("hcdw-theme");
+        if (!t) t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
