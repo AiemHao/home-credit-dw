@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Secrets
+.env
+kaggle.json
+
+# Data: raw Kaggle files and the built warehouse are never committed
+data/raw/*
+!data/raw/.gitkeep
+data/fixture/
+data/warehouse/*
+!data/warehouse/.gitkeep
+
+# Models (commit only metrics / feature lists, not binaries)
+models/*.pkl
+models/*.joblib
+
+# LaTeX build output
+reports/latex/*.aux
+reports/latex/*.log
+reports/latex/*.out
+reports/latex/*.toc
+reports/latex/*.synctex.gz
+reports/latex/*.fdb_latexmk
+reports/latex/*.fls
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

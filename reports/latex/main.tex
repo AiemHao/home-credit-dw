@@ -1,0 +1,27 @@
+% Build: latexmk -pdf main.tex  (or upload this folder to Overleaf)
+% TODO: swap \documentclass for the HCMUT report class (hcmut-report.cls) if the group uses it.
+\documentclass[12pt,a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[vietnamese]{babel}
+\usepackage{graphicx,booktabs,hyperref,geometry,listings,xcolor}
+\geometry{margin=2.5cm}
+\graphicspath{{../figures/}}
+\lstset{basicstyle=\ttfamily\small,breaklines=true,frame=single}
+
+\title{Kho dữ liệu và Hệ hỗ trợ quyết định cho thẩm định tín dụng\\\large Home Credit Default Risk - CO4031 HK261}
+\author{Nhóm ... \\ Thành viên 1 - ... \quad Thành viên 2 - ... \quad Thành viên 3 - ...}
+\date{Tháng 11/2026 \\ Video: \url{https://youtu.be/...}}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\input{chapters/ch1_business_requirements}
+\input{chapters/ch2_dw_etl}
+\input{chapters/ch3_implementation}
+\input{chapters/ch4_dss}
+\input{chapters/ch5_evaluation}
+
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}

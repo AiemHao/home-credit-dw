@@ -1,0 +1,37 @@
+# Project-wide settings. Paths are relative to the repo root.
+
+paths:
+  raw_dir: data/raw
+  sample_dir: data/sample
+  fixture_dir: data/fixture
+  dw_path: data/warehouse/hc.duckdb
+  dq_report: data/warehouse/dq_report.json
+
+kaggle:
+  competition: home-credit-default-risk
+
+# The dataset has no real calendar dates: every time column is an offset in days/months
+# relative to the application. We pin all offsets to this assumed snapshot date.
+# Document this assumption in the report (Chapter 2).
+time:
+  anchor_date: "2018-05-17"
+  history_days: 3000   # dim_time covers [anchor - history_days, anchor + future_days]
+  future_days: 400
+
+cleaning:
+  days_employed_sentinel: 365243
+  income_outlier_quantile: 0.999   # incomes above this quantile are flagged and capped for ratios
+
+buckets:
+  # Left-closed intervals: [edge_i, edge_{i+1})
+  age_years:
+    edges: [18, 25, 35, 45, 55, 65, 120]
+    labels: ["18-24", "25-34", "35-44", "45-54", "55-64", "65+"]
+  income:
+    edges: [0, 100000, 150000, 200000, 300000, 1.0e12]
+    labels: ["<100k", "100k-150k", "150k-200k", "200k-300k", "300k+"]
+
+sample:
+  n_customers: 5000
+  test_share: 0.15
+  seed: 42
