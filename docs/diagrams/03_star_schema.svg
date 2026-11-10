@@ -1,0 +1,188 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="dg" viewBox="0 0 1240 890" width="1240" height="890" role="img" aria-labelledby="dg3-t dg3-d">
+<title id="dg3-t">Star schema (fact constellation)</title>
+<desc id="dg3-d">Two fact tables, fact_loan_application (one row per application) and fact_bureau_credit (one row per bureau credit), share dim_customer and dim_time. The application fact also uses dim_contract, dim_region and the mini-dimension dim_credit_history; the bureau fact uses the junk dimension dim_bureau_category and dim_time twice (open and close date).</desc>
+<style>
+.dg{--canvas:#fcfcfb;--bg:#ffffff;--line:#d6d5ce;--ink:#171716;--ink2:#52514e;--ink3:#8a8882;--acc:#2a78d6;--acc-soft:#eaf2fd;--acc-ink:#1c5cab;--org:#eb6834;--org-soft:#fdeee6;--org-ink:#b4441a;--ext:#efeeea;font-family:"Segoe UI Variable Text","Segoe UI",system-ui,-apple-system,Roboto,sans-serif}
+@media (prefers-color-scheme:dark){.dg{--canvas:#1a1a19;--bg:#232321;--line:#3b3b37;--ink:#f0efec;--ink2:#c3c2b7;--ink3:#97958e;--acc:#3987e5;--acc-soft:#15263b;--acc-ink:#8dbaf0;--org:#d95926;--org-soft:#3a2117;--org-ink:#f2a27e;--ext:#2c2c2a}}
+:root[data-theme=light] .dg{--canvas:#fcfcfb;--bg:#ffffff;--line:#d6d5ce;--ink:#171716;--ink2:#52514e;--ink3:#8a8882;--acc:#2a78d6;--acc-soft:#eaf2fd;--acc-ink:#1c5cab;--org:#eb6834;--org-soft:#fdeee6;--org-ink:#b4441a;--ext:#efeeea}
+:root[data-theme=dark] .dg{--canvas:#1a1a19;--bg:#232321;--line:#3b3b37;--ink:#f0efec;--ink2:#c3c2b7;--ink3:#97958e;--acc:#3987e5;--acc-soft:#15263b;--acc-ink:#8dbaf0;--org:#d95926;--org-soft:#3a2117;--org-ink:#f2a27e;--ext:#2c2c2a}
+.dg text{fill:var(--ink)}.dg .t3{fill:var(--ink3)}
+.dg .canvas{fill:var(--canvas)}
+.dg .tbl{fill:var(--bg);stroke:var(--line);stroke-width:1.2}
+.dg .hd{fill:var(--acc-soft);stroke:var(--acc);stroke-width:1.2}.dg .hdf{fill:var(--org-soft);stroke:var(--org);stroke-width:1.2}
+.dg .fr{stroke:var(--org);stroke-width:1.6;fill:none}.dg .dr{stroke:var(--acc);stroke-width:1.4;fill:none}
+.dg .nm{font-family:"Cascadia Code",Consolas,ui-monospace,monospace;font-size:13.5px;font-weight:700}
+.dg .tag{font-size:10.5px;font-weight:700;letter-spacing:0.7px;fill:var(--acc-ink)}.dg .tagf{font-size:10.5px;font-weight:700;letter-spacing:0.7px;fill:var(--org-ink)}
+.dg .c{font-family:"Cascadia Code",Consolas,ui-monospace,monospace;font-size:12.5px;fill:var(--ink)}
+.dg .cm{font-family:"Cascadia Code",Consolas,ui-monospace,monospace;font-size:12.5px;fill:var(--ink2)}
+.dg .pk{fill:var(--acc-soft)}.dg .pkt{font-size:9.5px;font-weight:700;fill:var(--acc-ink)}
+.dg .fk{fill:var(--ext)}.dg .fkt{font-size:9.5px;font-weight:700;fill:var(--ink2)}
+.dg .m{font-size:11px;fill:var(--ink3)}
+.dg .e{fill:none;stroke:var(--ink3);stroke-width:1.5}.dg .dash{stroke-dasharray:6 5}
+.dg .cf{fill:none;stroke:var(--ink3);stroke-width:1.5}
+.dg .lb{font-size:11.5px;fill:var(--ink2);font-family:"Cascadia Code",Consolas,ui-monospace,monospace;paint-order:stroke;stroke:var(--canvas);stroke-width:5px;stroke-linejoin:round}
+.dg .lg{font-size:12.5px;fill:var(--ink2)}
+.dg .row{fill:var(--line);opacity:0.35}
+</style>
+<defs>
+  <!-- "many" end (crow's foot) and "one" end (bar) -->
+  <marker id="dg3-many" viewBox="0 0 14 14" refX="13" refY="7" markerWidth="14" markerHeight="14" orient="auto" markerUnits="userSpaceOnUse"><path class="cf" d="M13,1 L2,7 L13,13 M2,7 H13"/></marker>
+  <marker id="dg3-one" viewBox="0 0 14 14" refX="1" refY="7" markerWidth="14" markerHeight="14" orient="auto" markerUnits="userSpaceOnUse"><path class="cf" d="M6,1 V13"/></marker>
+</defs>
+<rect class="canvas" width="1240" height="890"/>
+
+<!-- ===== Relationships (under the tables) ===== -->
+<path class="e" d="M260,124 C330,124 314,330 378,330" marker-start="url(#dg3-one)" marker-end="url(#dg3-many)"/>
+<path class="e" d="M260,372 C320,372 316,404 378,404" marker-start="url(#dg3-one)" marker-end="url(#dg3-many)"/>
+<path class="e" d="M260,616 C330,616 314,478 378,478" marker-start="url(#dg3-one)" marker-end="url(#dg3-many)"/>
+<path class="e" d="M640,228 C640,246 566,240 566,258" marker-start="url(#dg3-one)" marker-end="url(#dg3-many)"/>
+<path class="e" d="M790,228 C790,256 880,250 880,278" marker-start="url(#dg3-one)" marker-end="url(#dg3-many)"/>
+<path class="e" d="M1020,186 V278" marker-start="url(#dg3-one)" marker-end="url(#dg3-many)"/>
+<path class="e" d="M640,680 C640,662 566,664 566,646" marker-start="url(#dg3-one)" marker-end="url(#dg3-many)"/>
+<path class="e" d="M740,680 C740,630 900,636 900,594" marker-start="url(#dg3-one)" marker-end="url(#dg3-many)"/>
+<path class="e dash" d="M790,680 C790,646 990,646 990,594" marker-start="url(#dg3-one)" marker-end="url(#dg3-many)"/>
+<text x="792" y="633" class="lb">open_date_key</text>
+<text x="934" y="660" class="lb">close_date_key (0..1)</text>
+
+<!-- ===== Facts ===== -->
+<!-- fact_loan_application: x=380 y=260 w=270, 14 rows -->
+<g>
+  <rect class="tbl" x="380" y="260" width="270" height="384" rx="10"/>
+  <path class="hdf" d="M380,302 V270 a10,10 0 0 1 10,-10 H640 a10,10 0 0 1 10,10 V302 Z"/>
+  <path class="fr" d="M380,270 a10,10 0 0 1 10,-10 H640 a10,10 0 0 1 10,10 V634 a10,10 0 0 1 -10,10 H390 a10,10 0 0 1 -10,-10 Z"/>
+  <text x="396" y="282" class="tagf">FACT · 1 ROW PER APPLICATION</text>
+  <text x="396" y="297" class="nm">fact_loan_application</text>
+  <rect class="pk" x="394" y="312" width="26" height="15" rx="4"/><text x="407" y="323" class="pkt" text-anchor="middle">PK</text><text x="430" y="324" class="c">application_id</text>
+  <rect class="fk" x="394" y="336" width="26" height="15" rx="4"/><text x="407" y="347" class="fkt" text-anchor="middle">FK</text><text x="430" y="348" class="c">customer_key</text>
+  <rect class="fk" x="394" y="360" width="26" height="15" rx="4"/><text x="407" y="371" class="fkt" text-anchor="middle">FK</text><text x="430" y="372" class="c">credit_history_key</text>
+  <rect class="fk" x="394" y="384" width="26" height="15" rx="4"/><text x="407" y="395" class="fkt" text-anchor="middle">FK</text><text x="430" y="396" class="c">contract_key</text>
+  <rect class="fk" x="394" y="408" width="26" height="15" rx="4"/><text x="407" y="419" class="fkt" text-anchor="middle">FK</text><text x="430" y="420" class="c">region_key</text>
+  <rect class="fk" x="394" y="432" width="26" height="15" rx="4"/><text x="407" y="443" class="fkt" text-anchor="middle">FK</text><text x="430" y="444" class="c">application_date_key</text>
+  <rect class="row" x="381" y="456" width="268" height="1"/>
+  <text x="430" y="474" class="cm">target</text><text x="636" y="474" class="m" text-anchor="end">0 / 1 / NULL</text>
+  <text x="430" y="498" class="cm">is_train</text>
+  <text x="430" y="522" class="cm">amt_credit</text><text x="636" y="522" class="m" text-anchor="end">Σ</text>
+  <text x="430" y="546" class="cm">amt_income</text><text x="636" y="546" class="m" text-anchor="end">Σ</text>
+  <text x="430" y="570" class="cm">debt_to_income</text>
+  <text x="430" y="594" class="cm">ext_source_mean</text>
+  <text x="430" y="618" class="cm">max_dpd_days</text>
+  <text x="430" y="634" class="m">+ 5 more measures</text>
+</g>
+
+<!-- fact_bureau_credit: x=810 y=280 w=260 -->
+<g>
+  <rect class="tbl" x="810" y="280" width="260" height="312" rx="10"/>
+  <path class="hdf" d="M810,322 V290 a10,10 0 0 1 10,-10 H1060 a10,10 0 0 1 10,10 V322 Z"/>
+  <path class="fr" d="M810,290 a10,10 0 0 1 10,-10 H1060 a10,10 0 0 1 10,10 V582 a10,10 0 0 1 -10,10 H820 a10,10 0 0 1 -10,-10 Z"/>
+  <text x="826" y="302" class="tagf">FACT · 1 ROW PER BUREAU CREDIT</text>
+  <text x="826" y="317" class="nm">fact_bureau_credit</text>
+  <rect class="pk" x="824" y="332" width="26" height="15" rx="4"/><text x="837" y="343" class="pkt" text-anchor="middle">PK</text><text x="860" y="344" class="c">bureau_credit_id</text>
+  <rect class="fk" x="824" y="356" width="26" height="15" rx="4"/><text x="837" y="367" class="fkt" text-anchor="middle">FK</text><text x="860" y="368" class="c">customer_key</text>
+  <rect class="fk" x="824" y="380" width="26" height="15" rx="4"/><text x="837" y="391" class="fkt" text-anchor="middle">FK</text><text x="860" y="392" class="c">bureau_category_key</text>
+  <rect class="fk" x="824" y="404" width="26" height="15" rx="4"/><text x="837" y="415" class="fkt" text-anchor="middle">FK</text><text x="860" y="416" class="c">open_date_key</text>
+  <rect class="fk" x="824" y="428" width="26" height="15" rx="4"/><text x="837" y="439" class="fkt" text-anchor="middle">FK</text><text x="860" y="440" class="c">close_date_key</text>
+  <rect class="row" x="811" y="452" width="258" height="1"/>
+  <text x="860" y="470" class="cm">amt_credit_sum</text><text x="1056" y="470" class="m" text-anchor="end">Σ</text>
+  <text x="860" y="494" class="cm">amt_credit_sum_debt</text><text x="1056" y="494" class="m" text-anchor="end">Σ</text>
+  <text x="860" y="518" class="cm">credit_day_overdue</text>
+  <text x="860" y="542" class="cm">credit_duration_days</text>
+  <text x="860" y="566" class="cm">max_bb_dpd_status</text>
+  <text x="860" y="584" class="m">+ 2 more measures</text>
+</g>
+
+<!-- ===== Dimensions ===== -->
+<!-- dim_customer (shared) x=580 y=12 w=250 -->
+<g>
+  <rect class="tbl" x="580" y="12" width="250" height="216" rx="10"/>
+  <path class="hd" d="M580,54 V22 a10,10 0 0 1 10,-10 H820 a10,10 0 0 1 10,10 V54 Z"/>
+  <path class="dr" d="M580,22 a10,10 0 0 1 10,-10 H820 a10,10 0 0 1 10,10 V218 a10,10 0 0 1 -10,10 H590 a10,10 0 0 1 -10,-10 Z"/>
+  <text x="596" y="34" class="tag">SHARED (CONFORMED) DIMENSION</text>
+  <text x="596" y="49" class="nm">dim_customer</text>
+  <rect class="pk" x="594" y="64" width="26" height="15" rx="4"/><text x="607" y="75" class="pkt" text-anchor="middle">PK</text><text x="630" y="76" class="c">customer_key</text>
+  <text x="630" y="100" class="cm">sk_id_curr</text><text x="816" y="100" class="m" text-anchor="end">natural key</text>
+  <text x="630" y="124" class="cm">gender · age_bucket</text>
+  <text x="630" y="148" class="cm">income_type</text>
+  <text x="630" y="172" class="cm">income_bracket</text>
+  <text x="630" y="196" class="cm">occupation_type</text>
+  <text x="630" y="216" class="m">+ education, family, housing …</text>
+</g>
+
+<!-- dim_time (shared, role-playing) x=580 y=680 w=250 -->
+<g>
+  <rect class="tbl" x="580" y="680" width="250" height="192" rx="10"/>
+  <path class="hd" d="M580,722 V690 a10,10 0 0 1 10,-10 H820 a10,10 0 0 1 10,10 V722 Z"/>
+  <path class="dr" d="M580,690 a10,10 0 0 1 10,-10 H820 a10,10 0 0 1 10,10 V862 a10,10 0 0 1 -10,10 H590 a10,10 0 0 1 -10,-10 Z"/>
+  <text x="596" y="702" class="tag">SHARED · ROLE-PLAYING</text>
+  <text x="596" y="717" class="nm">dim_time</text>
+  <rect class="pk" x="594" y="732" width="26" height="15" rx="4"/><text x="607" y="743" class="pkt" text-anchor="middle">PK</text><text x="630" y="744" class="c">date_key</text><text x="816" y="744" class="m" text-anchor="end">yyyymmdd</text>
+  <text x="630" y="768" class="cm">full_date</text>
+  <text x="630" y="792" class="cm">day_offset</text><text x="816" y="792" class="m" text-anchor="end">vs snapshot</text>
+  <text x="630" y="816" class="cm">year · quarter</text>
+  <text x="630" y="840" class="cm">year_month</text>
+  <text x="630" y="862" class="m">snapshot 2018-05-17 (assumed)</text>
+</g>
+
+<!-- dim_contract x=20 y=40 -->
+<g>
+  <rect class="tbl" x="20" y="40" width="240" height="168" rx="10"/>
+  <path class="hd" d="M20,82 V50 a10,10 0 0 1 10,-10 H250 a10,10 0 0 1 10,10 V82 Z"/>
+  <path class="dr" d="M20,50 a10,10 0 0 1 10,-10 H250 a10,10 0 0 1 10,10 V198 a10,10 0 0 1 -10,10 H30 a10,10 0 0 1 -10,-10 Z"/>
+  <text x="36" y="62" class="tag">DIMENSION</text>
+  <text x="36" y="77" class="nm">dim_contract</text>
+  <rect class="pk" x="34" y="92" width="26" height="15" rx="4"/><text x="47" y="103" class="pkt" text-anchor="middle">PK</text><text x="70" y="104" class="c">contract_key</text>
+  <text x="70" y="128" class="cm">contract_type</text>
+  <text x="70" y="152" class="cm">accompanied_by</text>
+  <text x="70" y="176" class="cm">appr_weekday</text>
+  <text x="70" y="200" class="cm">appr_hour_band</text>
+</g>
+
+<!-- dim_region x=20 y=300 -->
+<g>
+  <rect class="tbl" x="20" y="300" width="240" height="144" rx="10"/>
+  <path class="hd" d="M20,342 V310 a10,10 0 0 1 10,-10 H250 a10,10 0 0 1 10,10 V342 Z"/>
+  <path class="dr" d="M20,310 a10,10 0 0 1 10,-10 H250 a10,10 0 0 1 10,10 V434 a10,10 0 0 1 -10,10 H30 a10,10 0 0 1 -10,-10 Z"/>
+  <text x="36" y="322" class="tag">DIMENSION</text>
+  <text x="36" y="337" class="nm">dim_region</text>
+  <rect class="pk" x="34" y="352" width="26" height="15" rx="4"/><text x="47" y="363" class="pkt" text-anchor="middle">PK</text><text x="70" y="364" class="c">region_key</text>
+  <text x="70" y="388" class="cm">region_rating_client</text>
+  <text x="70" y="412" class="cm">region_rating_city</text>
+  <text x="70" y="436" class="cm">density_band</text>
+</g>
+
+<!-- dim_credit_history (mini-dimension) x=20 y=520 -->
+<g>
+  <rect class="tbl" x="20" y="520" width="240" height="192" rx="10"/>
+  <path class="hd" d="M20,562 V530 a10,10 0 0 1 10,-10 H250 a10,10 0 0 1 10,10 V562 Z"/>
+  <path class="dr" d="M20,530 a10,10 0 0 1 10,-10 H250 a10,10 0 0 1 10,10 V702 a10,10 0 0 1 -10,10 H30 a10,10 0 0 1 -10,-10 Z"/>
+  <text x="36" y="542" class="tag">MINI-DIMENSION · ~200 ROWS</text>
+  <text x="36" y="557" class="nm">dim_credit_history</text>
+  <rect class="pk" x="34" y="572" width="26" height="15" rx="4"/><text x="47" y="583" class="pkt" text-anchor="middle">PK</text><text x="70" y="584" class="c">credit_history_key</text>
+  <text x="70" y="608" class="cm">bureau_active_bucket</text>
+  <text x="70" y="632" class="cm">max_dpd_bucket</text>
+  <text x="70" y="656" class="cm">has_current_overdue</text>
+  <text x="70" y="680" class="cm">has_bad_debt</text>
+  <text x="70" y="704" class="cm">prev_approval_bucket</text>
+</g>
+
+<!-- dim_bureau_category (junk) x=900 y=40 -->
+<g>
+  <rect class="tbl" x="900" y="40" width="240" height="146" rx="10"/>
+  <path class="hd" d="M900,82 V50 a10,10 0 0 1 10,-10 H1130 a10,10 0 0 1 10,10 V82 Z"/>
+  <path class="dr" d="M900,50 a10,10 0 0 1 10,-10 H1130 a10,10 0 0 1 10,10 V176 a10,10 0 0 1 -10,10 H910 a10,10 0 0 1 -10,-10 Z"/>
+  <text x="916" y="62" class="tag">JUNK DIMENSION · 66 ROWS</text>
+  <text x="916" y="77" class="nm">dim_bureau_category</text>
+  <rect class="pk" x="914" y="92" width="26" height="15" rx="4"/><text x="927" y="103" class="pkt" text-anchor="middle">PK</text><text x="950" y="104" class="c">bureau_category_key</text>
+  <text x="950" y="128" class="cm">credit_active</text>
+  <text x="950" y="152" class="cm">credit_type</text>
+  <text x="950" y="176" class="cm">credit_currency</text>
+</g>
+
+<!-- Legend -->
+<g transform="translate(20,770)">
+  <rect class="hdf" x="0" y="0" width="18" height="13" rx="3"/><text x="28" y="11" class="lg">Fact table</text>
+  <rect class="hd" x="0" y="24" width="18" height="13" rx="3"/><text x="28" y="35" class="lg">Dimension table</text>
+  <path class="e" d="M0,56 H40" marker-start="url(#dg3-one)" marker-end="url(#dg3-many)"/><text x="52" y="60" class="lg">one dimension row → many fact rows</text>
+  <path class="e dash" d="M0,80 H40" marker-start="url(#dg3-one)" marker-end="url(#dg3-many)"/><text x="52" y="84" class="lg">optional (nullable FK)</text>
+  <text x="0" y="108" class="lg">Σ additive measure</text>
+</g>
+</svg>
