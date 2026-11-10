@@ -17,7 +17,7 @@ React + TypeScript + Tailwind + Recharts (frontend/)                            
 ```
 
 Sơ đồ chi tiết (kiến trúc hệ thống, ETL, star schema, data lineage, luồng truy vấn, DSS) nằm trong
-[docs/architecture.md](docs/architecture.md). File nguồn Mermaid ở `docs/diagrams/`, và trang **Architecture** của web app cũng vẽ từ chính các file đó.
+[docs/architecture.md](docs/architecture.md). Mỗi sơ đồ là một file SVG vẽ tay trong `docs/diagrams/`; trang **Architecture** của web app hiển thị đúng các file đó.
 
 Kho dữ liệu là **DuckDB**: chạy local bằng file `data/warehouse/hc.duckdb`, hoặc trên
 **MotherDuck** (DuckDB cloud) để cả nhóm dùng chung. Chọn nơi dùng bằng biến `DW_TARGET` trong `.env`.
