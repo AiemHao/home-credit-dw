@@ -1,0 +1,149 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="dg" viewBox="0 0 1240 600" width="1240" height="600" role="img" aria-labelledby="dg2-t dg2-d">
+<title id="dg2-t">ETL pipeline</title>
+<desc id="dg2-d">Seven steps (extract, clean, aggregate, dimensions, facts, marts, quality gate) build a side file hc.duckdb.building. If every check passes the file atomically replaces hc.duckdb; if any step fails the side file is deleted and the live warehouse is untouched. A data-quality report is always written.</desc>
+<style>
+.dg{--canvas:#fcfcfb;--bg:#ffffff;--panel:#f4f4f1;--line:#d6d5ce;--ink:#171716;--ink2:#52514e;--ink3:#8a8882;--acc:#2a78d6;--acc-soft:#eaf2fd;--acc-ink:#1c5cab;--grn:#0ca30c;--grn-soft:#e6f5e6;--red:#d03b3b;--red-soft:#fbe8e8;--ext:#efeeea;font-family:"Segoe UI Variable Text","Segoe UI",system-ui,-apple-system,Roboto,sans-serif}
+@media (prefers-color-scheme:dark){.dg{--canvas:#1a1a19;--bg:#232321;--panel:#151514;--line:#3b3b37;--ink:#f0efec;--ink2:#c3c2b7;--ink3:#97958e;--acc:#3987e5;--acc-soft:#15263b;--acc-ink:#8dbaf0;--grn-soft:#132e15;--red-soft:#3a1919;--ext:#2c2c2a}}
+:root[data-theme=light] .dg{--canvas:#fcfcfb;--bg:#ffffff;--panel:#f4f4f1;--line:#d6d5ce;--ink:#171716;--ink2:#52514e;--ink3:#8a8882;--acc:#2a78d6;--acc-soft:#eaf2fd;--acc-ink:#1c5cab;--grn-soft:#e6f5e6;--red-soft:#fbe8e8;--ext:#efeeea}
+:root[data-theme=dark] .dg{--canvas:#1a1a19;--bg:#232321;--panel:#151514;--line:#3b3b37;--ink:#f0efec;--ink2:#c3c2b7;--ink3:#97958e;--acc:#3987e5;--acc-soft:#15263b;--acc-ink:#8dbaf0;--grn-soft:#132e15;--red-soft:#3a1919;--ext:#2c2c2a}
+.dg text{fill:var(--ink)}.dg .t2{fill:var(--ink2)}.dg .t3{fill:var(--ink3)}
+.dg .ti{font-size:15px;font-weight:600}.dg .tech{font-size:12px;fill:var(--acc-ink)}.dg .d{font-size:12.5px;fill:var(--ink2)}.dg .sm{font-size:11.5px}
+.dg .mono{font-family:"Cascadia Code",Consolas,ui-monospace,monospace;font-size:11px;fill:var(--ink3)}
+.dg .canvas{fill:var(--canvas)}.dg .card{fill:var(--bg);stroke:var(--line);stroke-width:1.2}.dg .panel{fill:var(--panel);stroke:var(--line);stroke-width:1.2}
+.dg .acc{fill:var(--acc-soft);stroke:var(--acc);stroke-width:1.4}.dg .ext{fill:var(--ext);stroke:var(--line);stroke-width:1.2}
+.dg .ok{fill:var(--grn-soft);stroke:var(--grn);stroke-width:1.4}.dg .ko{fill:var(--red-soft);stroke:var(--red);stroke-width:1.4}
+.dg .e{fill:none;stroke:var(--ink3);stroke-width:1.6}.dg .ah{fill:var(--ink3)}
+.dg .badge{fill:var(--acc)}.dg .bt{fill:#fff;font-size:12px;font-weight:700}
+.dg .chip{fill:var(--acc-soft)}.dg .ct{font-size:11.5px;font-weight:600;fill:var(--acc-ink)}
+.dg .gi{fill:var(--grn)}.dg .ri{fill:var(--red)}
+</style>
+<defs>
+  <marker id="dg2-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah"/></marker>
+</defs>
+<rect class="canvas" width="1240" height="600"/>
+
+<!-- Source -->
+<rect class="ext" x="36" y="18" width="300" height="56" rx="12"/>
+<text x="54" y="42" class="ti">Kaggle CSV · 8 files</text>
+<text x="54" y="62" class="d">58.5M rows · 2.6 GB · data/raw or data/sample</text>
+<path class="e" d="M186,74 V112" marker-end="url(#dg2-a)"/>
+<text x="1204" y="44" class="ti" text-anchor="end">hcdw etl --source raw</text>
+<text x="1204" y="64" class="d" text-anchor="end">≈ 39 s for the full dataset on a laptop</text>
+
+<!-- Build band -->
+<rect class="panel" x="20" y="114" width="1200" height="300" rx="16"/>
+<text x="40" y="140" class="t3 sm" font-weight="600" letter-spacing="0.6">EVERY STEP WRITES TO A SIDE FILE: hc.duckdb.building</text>
+
+<!-- step cards: x = 36 + i*170, width 148 -->
+<g>
+  <rect class="card" x="36" y="156" width="148" height="236" rx="12"/>
+  <circle class="badge" cx="58" cy="182" r="12"/><text x="58" y="186" class="bt" text-anchor="middle">1</text>
+  <text x="78" y="187" class="ti">Extract</text>
+  <text x="50" y="212" class="mono">etl/extract.py</text>
+  <text x="50" y="240" class="d">read_csv as text</text>
+  <text x="50" y="259" class="d">TRY_CAST to types</text>
+  <text x="50" y="278" class="d">declared cols only</text>
+  <text x="50" y="297" class="d">8 files → staging</text>
+  <rect class="chip" x="50" y="356" width="56" height="22" rx="11"/><text x="78" y="371" class="ct" text-anchor="middle">14.1 s</text>
+</g>
+<path class="e" d="M186,182 H204" marker-end="url(#dg2-a)"/>
+<g>
+  <rect class="card" x="206" y="156" width="148" height="236" rx="12"/>
+  <circle class="badge" cx="228" cy="182" r="12"/><text x="228" y="186" class="bt" text-anchor="middle">2</text>
+  <text x="248" y="187" class="ti">Clean</text>
+  <text x="220" y="212" class="mono">etl/clean.py</text>
+  <text x="220" y="240" class="d">R1 365243 → NULL</text>
+  <text x="220" y="259" class="d">R2 XNA → Unknown</text>
+  <text x="220" y="278" class="d">R4 income outliers</text>
+  <text x="220" y="297" class="d">R6–R10 bands, ratios</text>
+  <text x="220" y="322" class="t3 sm">pandas · unit-tested</text>
+  <rect class="chip" x="220" y="356" width="50" height="22" rx="11"/><text x="245" y="371" class="ct" text-anchor="middle">3.9 s</text>
+</g>
+<path class="e" d="M356,182 H374" marker-end="url(#dg2-a)"/>
+<g>
+  <rect class="card" x="376" y="156" width="148" height="236" rx="12"/>
+  <circle class="badge" cx="398" cy="182" r="12"/><text x="398" y="186" class="bt" text-anchor="middle">3</text>
+  <text x="418" y="187" class="ti">Aggregate</text>
+  <text x="390" y="212" class="mono">transform/10_*.sql</text>
+  <text x="390" y="240" class="d">27M monthly rows</text>
+  <text x="390" y="259" class="d">→ 1 per bureau credit</text>
+  <text x="390" y="278" class="d">→ 1 per applicant</text>
+  <text x="390" y="297" class="d">from 6 child tables</text>
+  <rect class="chip" x="390" y="356" width="50" height="22" rx="11"/><text x="415" y="371" class="ct" text-anchor="middle">1.9 s</text>
+</g>
+<path class="e" d="M526,182 H544" marker-end="url(#dg2-a)"/>
+<g>
+  <rect class="card" x="546" y="156" width="148" height="236" rx="12"/>
+  <circle class="badge" cx="568" cy="182" r="12"/><text x="568" y="186" class="bt" text-anchor="middle">4</text>
+  <text x="588" y="187" class="ti">Dimensions</text>
+  <text x="560" y="212" class="mono">transform/2x_*.sql</text>
+  <text x="560" y="240" class="d">6 dimensions</text>
+  <text x="560" y="259" class="d">surrogate keys</text>
+  <text x="560" y="278" class="d">mini + junk dims</text>
+  <text x="560" y="297" class="d">role-playing time</text>
+</g>
+<path class="e" d="M696,182 H714" marker-end="url(#dg2-a)"/>
+<g>
+  <rect class="card" x="716" y="156" width="148" height="236" rx="12"/>
+  <circle class="badge" cx="738" cy="182" r="12"/><text x="738" y="186" class="bt" text-anchor="middle">5</text>
+  <text x="758" y="187" class="ti">Facts</text>
+  <text x="730" y="212" class="mono">transform/3x_*.sql</text>
+  <text x="730" y="240" class="d">applications 356K</text>
+  <text x="730" y="259" class="d">bureau credits 1.7M</text>
+  <text x="730" y="278" class="d">key lookups</text>
+  <text x="730" y="297" class="d">FKs enforced</text>
+</g>
+<path class="e" d="M866,182 H884" marker-end="url(#dg2-a)"/>
+<g>
+  <rect class="card" x="886" y="156" width="148" height="236" rx="12"/>
+  <circle class="badge" cx="908" cy="182" r="12"/><text x="908" y="186" class="bt" text-anchor="middle">6</text>
+  <text x="928" y="187" class="ti">Marts</text>
+  <text x="900" y="212" class="mono">marts/*.sql</text>
+  <text x="900" y="240" class="d">application wide</text>
+  <text x="900" y="259" class="d">bureau credit wide</text>
+  <text x="900" y="278" class="d">KPI views</text>
+  <text x="900" y="297" class="d">views, no copies</text>
+</g>
+<!-- shared timing chip for steps 4-6 -->
+<path class="e" d="M560,346 V340 H1020 V346" stroke-dasharray="0"/>
+<rect class="chip" x="752" y="356" width="76" height="22" rx="11"/><text x="790" y="371" class="ct" text-anchor="middle">18.8 s</text>
+<path class="e" d="M1036,182 H1054" marker-end="url(#dg2-a)"/>
+<g>
+  <rect class="acc" x="1056" y="156" width="148" height="236" rx="12"/>
+  <circle class="badge" cx="1078" cy="182" r="12"/><text x="1078" y="186" class="bt" text-anchor="middle">7</text>
+  <text x="1098" y="187" class="ti">Quality gate</text>
+  <text x="1070" y="212" class="mono">etl/quality.py</text>
+  <text x="1070" y="240" class="d">PK unique · no</text>
+  <text x="1070" y="259" class="d">orphan foreign keys</text>
+  <text x="1070" y="278" class="d">row completeness</text>
+  <text x="1070" y="297" class="d">sum reconciliation</text>
+  <text x="1070" y="322" class="t3 sm">25 / 25 passed</text>
+  <rect class="chip" x="1070" y="356" width="50" height="22" rx="11"/><text x="1095" y="371" class="ct" text-anchor="middle">0.4 s</text>
+</g>
+
+<!-- Outcomes -->
+<path class="e" d="M186,414 V456" marker-end="url(#dg2-a)"/>
+<path class="e" d="M610,414 V456" marker-end="url(#dg2-a)"/>
+<path class="e" d="M1006,414 V456" marker-end="url(#dg2-a)"/>
+<text x="198" y="440" class="t3 sm">always</text>
+<text x="622" y="440" class="t3 sm">any step fails</text>
+<text x="1018" y="440" class="t3 sm">all checks pass</text>
+
+<rect class="card" x="36" y="458" width="330" height="104" rx="12"/>
+<text x="56" y="486" class="ti">Data-quality report</text>
+<text x="56" y="504" class="mono">data/warehouse/dq_report.json</text>
+<text x="56" y="528" class="d">row counts · step timings · every check</text>
+<text x="56" y="546" class="d">with its detail, for the report chapter</text>
+
+<rect class="ko" x="420" y="458" width="380" height="104" rx="12"/>
+<circle class="ri" cx="448" cy="486" r="11"/><path d="M443,481 L453,491 M453,481 L443,491" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+<text x="468" y="491" class="ti">Rolled back</text>
+<text x="440" y="522" class="d">hc.duckdb.building is deleted</text>
+<text x="440" y="540" class="d">the live warehouse stays exactly as it was</text>
+
+<rect class="ok" x="854" y="458" width="350" height="104" rx="12"/>
+<circle class="gi" cx="882" cy="486" r="11"/><path d="M876,486 L880.5,490.5 L888,482" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="902" y="491" class="ti">Atomic swap</text>
+<text x="874" y="522" class="d">hc.duckdb.building → hc.duckdb</text>
+<text x="874" y="540" class="d">API and dashboard read the new snapshot</text>
+</svg>
