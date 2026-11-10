@@ -1,18 +1,18 @@
 import clsx from "clsx";
 import { useState } from "react";
-import sys from "../../../docs/diagrams/01_system_architecture.mmd?raw";
-import etl from "../../../docs/diagrams/02_etl_pipeline.mmd?raw";
-import star from "../../../docs/diagrams/03_star_schema.mmd?raw";
-import lineage from "../../../docs/diagrams/04_data_lineage.mmd?raw";
-import request from "../../../docs/diagrams/05_request_flow.mmd?raw";
-import dss from "../../../docs/diagrams/06_dss_flow.mmd?raw";
-import { Mermaid } from "../components/Mermaid";
+import sys from "../../../docs/diagrams/01_system_architecture.svg?raw";
+import etl from "../../../docs/diagrams/02_etl_pipeline.svg?raw";
+import star from "../../../docs/diagrams/03_star_schema.svg?raw";
+import lineage from "../../../docs/diagrams/04_data_lineage.svg?raw";
+import request from "../../../docs/diagrams/05_request_flow.svg?raw";
+import dss from "../../../docs/diagrams/06_dss_flow.svg?raw";
+import { Diagram } from "../components/Diagram";
 import { Card, PageHeader } from "../components/ui";
 
 const DIAGRAMS = [
   {
-    key: "system", name: "01_system_architecture", title: "System architecture", code: sys,
-    summary: "Five layers, each with one job: source files → ETL → DuckDB warehouse (staging / dw / mart) → FastAPI (OLAP + DSS) → React dashboard.",
+    key: "system", name: "01_system_architecture", title: "System architecture (C4)", code: sys,
+    summary: "C4 container view: the analyst uses the web dashboard; the API answers from the DuckDB warehouse and the decision-support model; the ETL builds the warehouse from the Kaggle files.",
     points: [
       "The warehouse is a single DuckDB file: columnar, vectorised, no server to run - full refresh of 2.6 GB of CSV in about 40 s.",
       "The API is the only reader of the warehouse; the browser never sees SQL it can change (dimensions are whitelisted, values are bound parameters).",
@@ -67,7 +67,7 @@ const STACK = [
   ["Storage & OLAP", "DuckDB (local file) · MotherDuck (optional cloud copy)"],
   ["ETL", "Python 3.12 · pandas · DuckDB SQL · Typer CLI (hcdw)"],
   ["Backend", "FastAPI · Uvicorn · cached, whitelisted SQL"],
-  ["Frontend", "React 18 · TypeScript · Tailwind CSS · Recharts · Mermaid"],
+  ["Frontend", "React 18 · TypeScript · Tailwind CSS · Recharts · hand-drawn SVG diagrams"],
   ["Decision support", "LightGBM · scikit-learn · business rules"],
   ["Quality", "pytest (ETL, API) · data-quality report per run"],
 ];
@@ -82,7 +82,7 @@ export default function Architecture() {
   return (
     <div className="space-y-6">
       <PageHeader title="Architecture & design"
-        description="How the system is built - from Kaggle files to this page. Diagram sources are plain Mermaid files in docs/diagrams/, rendered here and on GitHub; hover a diagram to download it as SVG for the report." />
+        description="How the system is built - from Kaggle files to this page. Each diagram is a hand-drawn SVG in docs/diagrams/ that follows the light/dark theme; hover it to open it full screen or download the SVG for the report." />
 
       <div className="flex gap-1 overflow-x-auto rounded-xl border border-line bg-surface p-1">
         {DIAGRAMS.map((x, i) => (
@@ -95,7 +95,7 @@ export default function Architecture() {
       </div>
 
       <Card title={d.title} subtitle={d.summary}>
-        <Mermaid key={d.key} code={d.code} name={d.name} />
+        <Diagram key={d.key} svg={d.code} name={d.name} />
       </Card>
 
       <div className="grid gap-4 lg:grid-cols-2">
@@ -107,7 +107,7 @@ export default function Architecture() {
               </li>
             ))}
           </ul>
-          <p className="mt-4 font-mono text-[11px] text-ink-3">docs/diagrams/{d.name}.mmd</p>
+          <p className="mt-4 font-mono text-[11px] text-ink-3">docs/diagrams/{d.name}.svg</p>
         </Card>
         <Card title="Tech stack">
           <dl className="grid gap-x-6 gap-y-2.5 sm:grid-cols-2">

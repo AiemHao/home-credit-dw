@@ -12,7 +12,7 @@ import Overview from "./pages/Overview";
 import Portfolio from "./pages/Portfolio";
 import RiskSimulator from "./pages/RiskSimulator";
 
-// Mermaid is large: load the Architecture page (and mermaid) only when it is opened.
+// The Architecture page inlines six large SVGs: load it only when it is opened.
 const Architecture = lazy(() => import("./pages/Architecture"));
 
 function Splash({ error }: { error?: string }) {
