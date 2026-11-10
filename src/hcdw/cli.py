@@ -33,15 +33,19 @@ def _resolve_source(source: str) -> Path:
 
 @app.command()
 def download() -> None:
-    """Download the Kaggle competition files into data/raw (needs ~/.kaggle/kaggle.json and
-    accepting the competition rules on kaggle.com first)."""
-    s = get_settings()
-    if shutil.which("kaggle") is None:
+    """Download the Kaggle competition files into data/raw.
+
+    Needs the competition rules accepted on kaggle.com and a Kaggle credential: KAGGLE_API_TOKEN
+    (new KGAT_ tokens; may be set in .env) or ~/.kaggle/kaggle.json (legacy)."""
+    s = get_settings()  # also loads .env, so KAGGLE_API_TOKEN there reaches the kaggle CLI
+    # The venv's Scripts folder is not on PATH unless the venv is activated.
+    kaggle = shutil.which("kaggle") or shutil.which("kaggle", path=str(Path(sys.executable).parent))
+    if kaggle is None:
         typer.echo('kaggle CLI not found. Run: pip install -e ".[etl]"', err=True)
         raise typer.Exit(1)
     s.raw_dir.mkdir(parents=True, exist_ok=True)
     comp = s.raw["kaggle"]["competition"]
-    subprocess.run(["kaggle", "competitions", "download", "-c", comp, "-p", str(s.raw_dir)], check=True)
+    subprocess.run([kaggle, "competitions", "download", "-c", comp, "-p", str(s.raw_dir)], check=True)
     for z in s.raw_dir.glob("*.zip"):
         with zipfile.ZipFile(z) as zf:
             zf.extractall(s.raw_dir)

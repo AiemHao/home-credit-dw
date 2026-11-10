@@ -13,11 +13,11 @@ RISK_SCALE = ["#2e7d32", "#f9a825", "#c62828"]  # green -> amber -> red
 
 def kpi_row(k: dict) -> None:
     cols = st.columns(5)
-    cols[0].metric("Applications", f"{int(k['n_applications']):,}")
+    cols[0].metric("Applications", fmt_compact(k["n_applications"]), help=f"{int(k['n_applications']):,}")
     cols[1].metric("Default rate", fmt_pct(k["default_rate"]))
     cols[2].metric("Median debt-to-income", fmt_num(k["median_dti"], 3))
     cols[3].metric("Overdue share", fmt_pct(k["overdue_share"]))
-    cols[4].metric("Avg credit", fmt_num(k["avg_credit"], 0))
+    cols[4].metric("Avg credit", fmt_compact(k["avg_credit"]), help=fmt_num(k["avg_credit"], 0))
 
 
 def fmt_pct(v) -> str:
